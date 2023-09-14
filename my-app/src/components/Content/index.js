@@ -1,6 +1,6 @@
 import ProductList from "../ProductList";
 import CategoryList from '../CategoryList';
-import {Component} from "react";
+import { Component } from "react";
 import { Wrapper } from "./styles";
 
 const categories = [

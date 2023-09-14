@@ -23,11 +23,11 @@ class ProductItem extends Component {
                 <Item>
                     <input type="checkbox" onChange={this.handleCheckboxChange}/>
                     <Title><Link to={`product/${this.props.product.id}`}>{this.props.product.name}</Link></Title>
-                    <div>{this.props.product.price}$</div>
+                    <div>{this.props.product.price}¥</div>
                 </Item>
             </Wrapper>
         );
-    }
+    };
 }
 
 export default ProductItem;

@@ -10,17 +10,14 @@ class ProductList extends Component {
             amount: 0
         }
     }
-
     addItem = () => {
         instancesCount += 1
         this.props.addItem(instancesCount);
     }
-
     removeItem = () => {
         instancesCount -= 1
         this.props.addItem(instancesCount);
     }
-
     handleAmountChange = (change) => {
         if (change === 0) {
             this.setState({
@@ -32,20 +29,18 @@ class ProductList extends Component {
             })
         }
     }
-
     vanishAmount = () => {
         this.setState({
             amount: 0
         })
     }
-
     render() {
         this.categoryProducts = this.props.category === 0
             ? this.props.products
             : this.props.products.filter(product => product.categoryId === this.props.category)
         return (
             <>
-            <div>You want to order {this.state.amount} items.</div>
+            <div>In your order {this.state.amount} items.</div>
             <Wrapper>
                 {this.categoryProducts.map(product =>
                     <ProductItem
