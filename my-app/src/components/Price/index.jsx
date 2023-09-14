@@ -3,7 +3,7 @@ import { Input } from './styles';
 
 const currencyNames = {
     uah: 'UAH',
-    usd: 'USD'
+    jpy: 'JPY'
 };
 
 class Price extends Component {

@@ -17,7 +17,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #29406d;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@ nav div a {
 }
 
 header {
-  background-color: rgba(66, 75, 82, .4);
+  background-color: rgba(20, 98, 158, 0.4);
   padding: 10px;
 }
 

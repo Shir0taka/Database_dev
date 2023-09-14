@@ -8,26 +8,26 @@ import {
 } from "react-router-dom";
 import Product from '../Product';
 
-const goods = [
-  { id: 1, name: "Paste plate", price: 6.99, categoryId: 1 },
-  { id: 2, name: "Saucer", price: 4.99, categoryId: 1 },
-  { id: 3, name: "Tea spoon", price: 1.99, categoryId: 1 },
-  { id: 4, name: "Black jeans", price: 15.99, categoryId: 2 },
-  { id: 5, name: "Pattern blouse", price: 20.99, categoryId: 2 },
-  { id: 6, name: "Face tonic", price: 8.99, categoryId: 3 },
-  { id: 7, name: "Lip balm", price: 6.99, categoryId: 3 },
-  { id: 8, name: "Face wash foam", price: 12.99, categoryId: 3 },
-  { id: 9, name: "Micellar water", price: 9.99, categoryId: 3 },
+const food = [
+  { id: 1, name: "Ham Ramen", price: 7.99, categoryId: 1 },
+  { id: 2, name: "Tonkotsu", price: 3.99, categoryId: 1 },
+  { id: 3, name: "Miso Soup", price: 1.99, categoryId: 1 },
+  { id: 4, name: "Dorayaki", price: 2.99, categoryId: 2 },
+  { id: 5, name: "Mochi", price: 0.99, categoryId: 2 },
+  { id: 6, name: "Dango", price: 1.99, categoryId: 2 },
+  { id: 7, name: "Unagi", price: 30.99, categoryId: 3 },
+  { id: 8, name: "Natto", price: 10.99, categoryId: 3 },
+  { id: 9, name: "Sushi", price: 14.99, categoryId: 3 },
 ]
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Content goods={goods}/>,
+    element: <Content food={food}/>,
   },
   {
     path: "product/:productId",
-    element: <Product products={goods}/>,
+    element: <Product products={food}/>,
   }
 ])
 

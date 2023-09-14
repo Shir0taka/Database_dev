@@ -5,9 +5,9 @@ import FeedbackForm from "../FeedbackForm";
 import Price from "../Price";
 
 
-function сonvertfromUsdToUah(usd) {
-    const course = 37.74;
-    const result = usd * course;
+function сonvertfromUsdToUah(jpy) {
+    const course = 0.25;
+    const result = jpy * course;
     const rounded = Math.round(result * 100) / 100;
     return rounded.toString();
 }
@@ -17,8 +17,8 @@ function Product(props) {
 
     let product = props.products.find(p => p.id === productId);
 
-    const usd = product.price;
-    const uah = сonvertfromUsdToUah(usd);
+    const jpy = product.price;
+    const uah = сonvertfromUsdToUah(jpy);
     return(
         <Wrapper>
             <div>
@@ -27,7 +27,7 @@ function Product(props) {
             </div>
             <div>
                 <Price currency="uah" amount={uah}/>
-                <Price currency="usd" amount={usd}/>
+                <Price currency="jpy" amount={jpy}/>
             </div>
             <div><FeedbackForm/></div>
         </Wrapper>

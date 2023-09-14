@@ -11,10 +11,11 @@ export const Wrapper = styled.div`
 Wrapper.displayName = 'CategoryListWrapper';
 
 export const CategoryItem = styled.div`
-    background-color: #565656;
-    color: white;
+    background-color: #1E90FF;
+    color: #AFEEEE;
     border-radius: 10px;
     padding: 5px 6px;
     cursor: pointer;
 `
+
 CategoryItem.displayName = 'CategoryItem'

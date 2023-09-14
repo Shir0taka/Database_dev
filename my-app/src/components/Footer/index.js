@@ -3,7 +3,9 @@ import { Wrapper } from './styles'
 function Footer() {
     return (
         <Wrapper>
-            Footer
+            © Kryk Maksym 308
+            <br/>
+            All copyrights is not saved
         </Wrapper>
     );
 }
