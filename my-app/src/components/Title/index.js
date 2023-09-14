@@ -1,7 +1,7 @@
 function Title() {
     return (
         <div className="Title">
-            Marketplace Test App
+            Marketplace Test Application
         </div>
     );
 }

@@ -1,8 +1,10 @@
+import { Wrapper } from './styles'
+
 function Footer() {
     return (
-        <footer>
+        <Wrapper>
             Footer
-        </footer>
+        </Wrapper>
     );
 }
 
