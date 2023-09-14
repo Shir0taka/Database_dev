@@ -1,0 +1,16 @@
+.wrapper {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.categoryItem {
+    background-color: #565656;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 6px;
+    cursor: pointer;
+}

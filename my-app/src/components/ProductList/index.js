@@ -1,61 +1,82 @@
-import { Component } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductItem from "../ProductItem";
-import { Wrapper } from  './styles';
 
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Wrapper } from  './styles';
+import styles from './styles.module.css'
+import './styles'
+
+import { goodsContext } from "../../contexts/GoodsContext";
 let instancesCount = 0
-class ProductList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            amount: 0
-        }
+
+const ProductList = (props) => {
+    const goods = useContext(goodsContext);
+    let [categoryProducts, setCategoryProducts] = useState([]);
+
+    const [amount, setAmount] = useState(0);
+    const [divs, setDivs] = useState([]);
+
+    const handleAddDiv = () => {
+        const newDiv = <div key={divs.length} className={styles.newDiv}>New Item</div>;
+        setDivs([...divs, newDiv]);
+    };
+
+    const addItem = () => {
+        instancesCount += 1;
+        props.addItem (instancesCount);
     }
-    addItem = () => {
-        instancesCount += 1
-        this.props.addItem(instancesCount);
+
+    const removeItem = () => {
+        instancesCount -= 1;
+        props.addItem (instancesCount);
     }
-    removeItem = () => {
-        instancesCount -= 1
-        this.props.addItem(instancesCount);
-    }
-    handleAmountChange = (change) => {
+
+    const handleAmountChange = (change) => {
         if (change === 0) {
-            this.setState({
-                amount: 0
-            })
+            setAmount(0);
         } else {
-            this.setState({
-                amount: this.state.amount + change
-            })
+            setAmount(amount + change);
         }
     }
-    vanishAmount = () => {
-        this.setState({
-            amount: 0
-        })
+
+    const vanishAmount = () => {
+        setAmount(0);
     }
-    render() {
-        this.categoryProducts = this.props.category === 0
-            ? this.props.products
-            : this.props.products.filter(product => product.categoryId === this.props.category)
-        return (
-            <>
-            <div>In your order {this.state.amount} items.</div>
-            <Wrapper>
-                {this.categoryProducts.map(product =>
+
+    useEffect(() => {
+        if (props.category === 0) {
+            setCategoryProducts(goods);
+        } else {
+            setCategoryProducts(goods.filter(product => product.categoryId === props.category));
+        }
+    }, [props.category, goods]);
+
+    return (
+        <>
+            <button onClick={handleAddDiv}>Add item</button>
+            <div className={styles.container}>
+                <TransitionGroup>
+                {divs.map((div) => (
+                    <CSSTransition key={div.key} timeout={300} classNames="fade">
+                    {div}
+                    </CSSTransition>
+                ))}
+                </TransitionGroup>
+            </div>
+            <div>You want to order {amount} items.</div>
+            <div className={styles.wrapper}>
+                {categoryProducts.map(product =>
                     <ProductItem
-                        removeItem={this.removeItem}
-                        addItem={this.addItem}
-                        handleAmountChange={this.handleAmountChange}
-                        vanishAmount={this.vanishAmount}
+                        removeItem={removeItem}
+                        addItem={addItem}
+                        handleAmountChange={handleAmountChange}
+                        vanishAmount={vanishAmount}
                         product={product}
                         key={product.id}/>
                 )}
-            </Wrapper>
-            </>
-
-        )
-    }
+            </div>
+        </>
+    )
 }
 
-export default ProductList;
+ export default ProductList;

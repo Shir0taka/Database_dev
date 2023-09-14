@@ -1,0 +1,39 @@
+.wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dialogEnter {
+    position: fixed;
+    width: 50%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b7c1c3;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-enter {
+    opacity: 0;
+}
+
+.dialog-enter-active {
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.dialog-exit {
+    opacity: 1;
+}
+
+.dialog-exit-active {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.toggleButton {
+    margin-top: 10px;
+}

@@ -7,6 +7,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Product from '../Product';
+import LoginForm from '../LoginForm';
+import AdminPanel from '../AdminPanel';
+import RegisterForm from '../RegisterForm';
+import NumberForm from '../NumberForm';
+import TestComponent from '../TestComponent';
+import ReduxComponent from '../ReduxComponent';
 
 const food = [
   { id: 1, name: "Ham Ramen", price: 7.99, categoryId: 1 },
@@ -23,12 +29,40 @@ const food = [
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Content food={food}/>,
+    element: <Content />,
   },
   {
     path: "product/:productId",
-    element: <Product products={food}/>,
-  }
+    element: <Product />,
+  },
+  {
+    path: "categories/:categoryId",
+    element: <Content />
+  },
+  {
+    path: "admin/",
+    element: <AdminPanel />
+  },
+  {
+    path: "login/",
+    element: <LoginForm />
+  },
+  {
+    path: "register/",
+    element: <RegisterForm />
+  },
+  {
+    path: "numbers/",
+    element: <NumberForm />
+  },
+  {
+    path: "test/",
+    element: <TestComponent />
+  },
+  {
+    path: "redux/",
+    element: <ReduxComponent />
+  },
 ])
 
 function App() {
