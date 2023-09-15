@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Table, Button, Modal, Form, Input, Upload, message, Popconfirm, List, Card } from 'antd';
 import { PlusOutlined, UploadOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
@@ -47,10 +46,10 @@ const Products = () => {
   const [form] = Form.useForm();
   const [products, setProducts] = useState([
     {
-      name: 'Example product',
-      description: 'Sample description',
-      price: 10,
-      image: 'https://via.placeholder.com/150x150',
+      name: 'Placehodler product',
+      description: 'Buy placeholder to hold the place',
+      price: 0.99,
+      image: 'https://img-9gag-fun.9cache.com/photo/aXj7e7v_460s.jpg',
     }
   ]);
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -143,7 +142,7 @@ const Products = () => {
   const renderListView = () => {
     return (
       <List
-        grid={{ gutter: 16, column: 4 }}
+        grid={{ gutter: 16, column: 2 }}
         dataSource={products}
         renderItem={(item) => (
           <List.Item>

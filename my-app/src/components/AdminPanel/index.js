@@ -68,7 +68,7 @@ class AdminPanel extends React.Component {
             </Header>
             <Content style={{ margin: '0 16px' }}>
                 <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                    Various admin things!
+                    What's on your mind, Mr. Admin?
                     <Products />
                 </div>
             </Content>

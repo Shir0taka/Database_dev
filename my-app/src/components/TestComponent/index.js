@@ -1,23 +1,27 @@
-import { useSelector, useDispatch, Provider } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { increment, setUser } from "../../actions";
+
 
 const TestComponent = () => {
   const counter = useSelector((state) => state.counter);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+
   const handleClick = () => {
     dispatch(increment());
   };
 
+
   const handleLogin = () => {
     dispatch(setUser(
       {
-        name: "Yelyzaveta",
-        email: "ktt.eli.z.abeth@gmail.com"
+        name: "Kryk",
+        email: "vector.secret@gmail.com"
       }
     ));
   };
+
 
   return (
     <div>
@@ -31,5 +35,6 @@ const TestComponent = () => {
     </div>
   );
 }
+
 
 export default TestComponent;

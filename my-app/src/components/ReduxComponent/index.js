@@ -8,6 +8,7 @@ import {
 } from '../../rootReducer.js';
 import styles from './styles.module.css'
 
+
 function ReduxComponent() {
     const productsList = useSelector((state) => {
         switch (state.filter) {
@@ -24,12 +25,15 @@ function ReduxComponent() {
   const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
 
+
   useEffect(() => { }, [dispatch, productsList, filter]);
+
 
   const handleFilterChange = (event) => {
     const filter = event.target.value;
     dispatch(filterProducts(filter));
   };
+
 
   const updateSelectedTaskStatus = (productId) => {
     const product = productsList.find((obj) => obj.id === productId);
@@ -41,11 +45,13 @@ function ReduxComponent() {
     );
   };
 
+
   const handleAddTask = () => {
     const lastProduct = productsList[productsList.length - 1];
     const newId = lastProduct ? lastProduct.id + 1 : 1;
     dispatch(addProduct({ id: newId, title: 'New product', status: 'object' }));
   };
+
 
   const handleRemoveTask = (productId) => {
     const product = productsList.find((obj) => obj.id === productId);
@@ -90,5 +96,6 @@ function ReduxComponent() {
     </div>
   );
 }
+
 
 export default ReduxComponent;
