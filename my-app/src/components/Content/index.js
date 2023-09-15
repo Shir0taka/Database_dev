@@ -1,45 +1,85 @@
 import ProductList from "../ProductList";
 import CategoryList from '../CategoryList';
-import { Component } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { categoriesContext } from "../../contexts/CategoriesContext";
+import Debug from "../Debug";
+
+import { CSSTransition } from "react-transition-group";
+
 import { Wrapper } from "./styles";
 
-const categories = [
-    { id: 1, name: "Main meal" },
-    { id: 2, name: "Sweets" },
-    { id: 3, name: "Exotic food" }
-]
+import store from '../../store.js';
+import styles from './styles.module.css'
+import './styles.css';
 
-class Content extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            categoryAmount: 0,
-            currentCategory: 0
-        }
+const Content = (props) => {
+    const { categoryId } = useParams();
+    const categories = useContext(categoriesContext);
+    const [categoryAmount, setCategoryAmount] = useState(0);
+    const [currentCategory, setCurrentCategory] = useState(0);
+    const location = useLocation();
+
+    let [history, setHistory] = useState([]);
+
+    useEffect(() => {
+      setHistory([...history, location.pathname]);
+    }, [location]);
+
+    useEffect(() => {
+        if (categoryId != null && categories.filter(e => e.id == categoryId).length > 0)
+            setCurrentCategory(+categoryId);
+
+        console.log(store.getState());
+
+        store.dispatch({ type: 'INCREMENT' });
+        console.log(store.getState());
+
+        store.dispatch({ type: 'INCREMENT' });
+        console.log(store.getState());
+
+        store.dispatch({ type: 'DECREMENT' });
+        console.log(store.getState());
+    }, []);
+
+    const addItem = (amount) => {
+        setCategoryAmount(amount);
     }
 
-    getCategory = (key) => {
-        this.setState({
-            currentCategory: key
-        });
+    const getCategory = (key) => {
+        setCurrentCategory(key);
     }
 
-    addItem = (amount) => {
-        this.setState({
-            categoryAmount: amount
-        })
-    }
+    const [showDialog, setShowDialog] = useState(false);
 
-    render() {
-        return (
-            <Wrapper>
-                <CategoryList getCategory={this.getCategory} categories={categories}/>
-                <div>Current range: {this.state.categoryAmount}</div>
-                <ProductList addItem={this.addItem} products={this.props.food} category={this.state.currentCategory}/>
-            </Wrapper>
-        );
-    }
+    const toggleDialog = () => {
+        setShowDialog(!showDialog);
+    };
 
+    return (
+        <div className={styles.wrapper}>
+            <button className={styles.toggleButton} onClick={toggleDialog}>Toggle Dialog</button>
+            <CSSTransition
+                in={showDialog}
+                timeout={800}
+                classNames="dialog"
+                unmountOnExit
+            >
+                <div className={styles.dialogEnter}>
+                <div >
+                <h1>Shy Dialog</h1>
+                <p>You opened a shy dialog box. Please close, he's shy</p>
+                <button onClick={toggleDialog}>Close Dialog</button>
+                </div>
+                </div>
+            </CSSTransition>
+
+            <Debug history={history}/>
+            <CategoryList getCategory={getCategory}/>
+            <div>Goods amount: {categoryAmount}</div>
+            <ProductList addItem={addItem} category={currentCategory}/>
+        </div>
+    );
 }
 
 export default Content;

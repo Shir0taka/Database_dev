@@ -10,10 +10,11 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #b7c1c3;
+    background-color: #4169E1;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+    color: #B0E0E6;
 }
 
 .dialog-enter {

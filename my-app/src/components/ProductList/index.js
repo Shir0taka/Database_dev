@@ -10,7 +10,7 @@ import { goodsContext } from "../../contexts/GoodsContext";
 let instancesCount = 0
 
 const ProductList = (props) => {
-    const goods = useContext(goodsContext);
+    const food = useContext(goodsContext);
     let [categoryProducts, setCategoryProducts] = useState([]);
 
     const [amount, setAmount] = useState(0);
@@ -45,11 +45,11 @@ const ProductList = (props) => {
 
     useEffect(() => {
         if (props.category === 0) {
-            setCategoryProducts(goods);
+            setCategoryProducts(food);
         } else {
-            setCategoryProducts(goods.filter(product => product.categoryId === props.category));
+            setCategoryProducts(food.filter(product => product.categoryId === props.category));
         }
-    }, [props.category, goods]);
+    }, [props.category, food]);
 
     return (
         <>

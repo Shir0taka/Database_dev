@@ -1,15 +1,25 @@
+import { useContext } from "react";
+import { categoriesContext } from "../../contexts/CategoriesContext";
+import { useNavigate } from 'react-router-dom';
+
 import { Wrapper, CategoryItem } from './styles';
+import styles from './styles.module.css'
 
 const CategoryList = (props) => {
-    const categories = props.categories;
+    const navigate = useNavigate();
+    const categories = useContext(categoriesContext);
 
     const handleCategoryClick = (catId) => {
         props.getCategory(catId);
+        if (categories.filter(e => e.id == catId).length > 0)
+            navigate(`/categories/${catId}`);
+        else
+            navigate(`/`);
     }
 
     return(
-        <Wrapper>
-            <CategoryItem onClick={(e) => handleCategoryClick(0)}>All</CategoryItem>
+        <div className={styles.wrapper}>
+            <CategoryItem notSpecified onClick={(e) => handleCategoryClick(0)}>All</CategoryItem>
             {
                 categories.map(category => (
                     <CategoryItem
@@ -19,7 +29,7 @@ const CategoryList = (props) => {
                     </CategoryItem>
                 ))
             }
-        </Wrapper>
+        </div>
     )
 }
 

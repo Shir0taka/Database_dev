@@ -5,9 +5,10 @@
     gap: 10px;
     width: 500px;
     margin: 15px auto;
-    background-color: #e1e1e1;
+    background-color: #1E90FF;
     border-radius: 10px;
     padding: 10px;
+    border-color: #191970;
 }
 
 .title {
@@ -32,27 +33,28 @@
     padding: 0.5rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: #191970;
+    background-color: #E0FFFF;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid #191970;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .formControl:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
+    color: #191970;
+    background-color: #E0FFFF;
+    border-color: #191970;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .errorMessage {
-    color: red;
+    color: #DC143C;
     font-size: 0.8rem;
     margin-top: 0.25rem;
     margin-left: 0.5rem;
+    text-shadow: #191970;
 }
 
 .submitButton {
@@ -62,38 +64,38 @@
     font-size: 1rem;
     font-weight: bold;
     line-height: 1.5;
-    color: #fff;
-    background-color: #576069;
-    border: 1px solid #484f55;
+    color: #AFEEEE;
+    background-color: #0000FF;
+    border: 1px solid #191970;
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .submitButton:hover {
-    color: #fff;
-    background-color: #454b51;
-    border-color: #35393c;
+    color: #E0FFFF;
+    background-color: #4169E1;
+    border-color: #191970;
 }
 
 .submitButton:disabled {
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+    color: #AFEEEE;
+    background-color: #7B68EE;
+    border-color: #191970;
 }
 
 .submitButton:not(:disabled):not(.disabled):active {
-    color: #fff;
+    color: #AFEEEE;
     background-color: #0062cc;
-    border-color: #005cbf;
+    border-color: #191970;
 }
 
 .submitButton:not(:disabled):not(.disabled):active:focus {
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+    box-shadow: 0 0 0 0.2rem #191970;
     outline: 0;
 }
 
 .submitButton:not(:disabled):not(.disabled):focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 0 0.2rem #191970;
     outline: 0;
 }
