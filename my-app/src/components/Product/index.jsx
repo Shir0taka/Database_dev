@@ -5,9 +5,9 @@ import FeedbackForm from "../FeedbackForm";
 import Price from "../Price";
 
 
-function сonvertfromUsdToUah(usd) {
-    const course = 37.74;
-    const result = usd * course;
+function сonvertfromJpyToUah(jpy) {
+    const course = 0.25;
+    const result = jpy * course;
     const rounded = Math.round(result * 100) / 100;
     return rounded.toString();
 }
@@ -15,19 +15,19 @@ function сonvertfromUsdToUah(usd) {
 function Product(props) {
     let { productId } = useParams();
 
-    let product = props.products.find(p => p.id === productId);
+    let product = props.products.find(p => p.id == productId);
 
-    const usd = product.price;
-    const uah = сonvertfromUsdToUah(usd);
+    const jpy = product.price;
+    const uah = сonvertfromJpyToUah(jpy);
     return(
         <Wrapper>
             <div>
                 <Title>{product.name}</Title>
-                <div>Example description</div>
+                <div>Here is the difference in currency</div>
             </div>
             <div>
                 <Price currency="uah" amount={uah}/>
-                <Price currency="usd" amount={usd}/>
+                <Price currency="jpy" amount={jpy}/>
             </div>
             <div><FeedbackForm/></div>
         </Wrapper>

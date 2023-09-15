@@ -16,7 +16,7 @@ class FeedbackForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state.value);
-        alert(`Your feedback "${this.state.value}" was added succesfully!`);
+        alert(`Saving your "${this.state.value}" message was succesfull\nThank you for your feedback!`);
         this.setState({value: ''})
     }
 

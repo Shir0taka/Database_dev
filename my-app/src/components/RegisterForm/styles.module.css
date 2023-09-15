@@ -1,0 +1,78 @@
+.form {
+    margin: 2rem;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formDiv {
+    margin: auto;
+    width: 80%;
+}
+
+.formControl {
+    margin: auto;
+    display: block;
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.formControl:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.submitButton {
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #576069;
+    border: 1px solid #484f55;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.submitButton:hover {
+    color: #fff;
+    background-color: #454b51;
+    border-color: #35393c;
+}
+
+.submitButton:disabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.submitButton:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+
+.submitButton:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+    outline: 0;
+}
+
+.submitButton:not(:disabled):not(.disabled):focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    outline: 0;
+}

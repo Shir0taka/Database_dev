@@ -1,0 +1,21 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 50%;
+    column-gap: 15px;
+    row-gap: 15px;
+    margin-top: 10px;
+}
+
+.container {
+   width: 50%;
+}
+
+.newDiv {
+    display: inline-block;
+    margin: 10px 3px;
+    padding: 3px;
+    background-color: #4169E1;
+    border-radius: 5px;
+    color: #7FFFD4;
+}

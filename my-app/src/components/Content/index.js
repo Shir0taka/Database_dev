@@ -1,12 +1,12 @@
 import ProductList from "../ProductList";
 import CategoryList from '../CategoryList';
-import {Component} from "react";
+import { Component } from "react";
 import { Wrapper } from "./styles";
 
 const categories = [
-    { id: 1, name: "Tableware" },
-    { id: 2, name: "Clothes" },
-    { id: 3, name: "Cosmetics" }
+    { id: 1, name: "Main meal" },
+    { id: 2, name: "Sweets" },
+    { id: 3, name: "Exotic food" }
 ]
 
 class Content extends Component {
@@ -34,8 +34,8 @@ class Content extends Component {
         return (
             <Wrapper>
                 <CategoryList getCategory={this.getCategory} categories={categories}/>
-                <div>Goods amount: {this.state.categoryAmount}</div>
-                <ProductList addItem={this.addItem} products={this.props.goods} category={this.state.currentCategory}/>
+                <div>Current range: {this.state.categoryAmount}</div>
+                <ProductList addItem={this.addItem} products={this.props.food} category={this.state.currentCategory}/>
             </Wrapper>
         );
     }
