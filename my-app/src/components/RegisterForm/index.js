@@ -33,7 +33,7 @@ const RegisterForm = () => {
             .required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-            fetch('http://localhost:3001/api/register', {
+            fetch('http://localhost:3001/', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

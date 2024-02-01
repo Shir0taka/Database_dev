@@ -11,7 +11,7 @@ const app = express();
 const port = 3001;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
   password: 'clover',
   database: 'restaurant',
   authPlugins: {
-    mysql_clear_password: () => () => Buffer.from(password + '\0')
+    mysql_clear_password: () => () => Buffer.from('clover' + '\0')
   }
 });
 
@@ -32,23 +32,15 @@ connection.connect((err) => {
   console.log('Connected to MySQL');
 });
 
-app.post('localhost:3000/register', async (req, res) => {
+app.post('/', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+  console.log('Received data from client:', { firstName, lastName, email, password });
 
   try {
-    const connection = await mysql.createConnection({
-      host: 'localhost',
-      user: 'Max',
-      password: 'clover',
-      database: 'restaurant',
-    });
-
     await connection.execute(
-      'INSERT INTO users (firstName, lastName, email, password) VALUES (name, role, email, password)',
+      'INSERT INTO users (name, role, email, password) VALUES (?, ?, ?, ?)',
       [firstName, lastName, email, password]
     );
-
-    await connection.end();
 
     res.json({ success: true, message: 'User registered successfully' });
   } catch (error) {
@@ -56,8 +48,6 @@ app.post('localhost:3000/register', async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
 });
-
-
 
 async function checkServer(port) {
   let isPortReachable;
@@ -78,28 +68,25 @@ async function checkServer(port) {
   }
 }
 
-app.post('/register', async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+app.post('/api/register', async (req, res) => {
+  const { name, role, email, password } = req.body;
 
   try {
-    const connection = await mysql.createConnection(connectionConfig);
-
-    const [results] = await connection.execute(
-      'INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)',
-      [firstName, lastName, email, password]
+    await connection.execute(
+      'INSERT INTO users (name, role, email, password) VALUES (?, ?, ?, ?)',
+      [name, role, email, password]
     );
 
-    await connection.end();
-
-    res.json({ success: true, message: 'User registered successfully', results });
+    res.json({ success: true, message: 'User registered successfully' });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
 });
 
-const server = http.createServer(app);
-
 app.listen(port, () => {
-  console.log(`Сервер запущен на порту ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
+
+
+connection.end();
