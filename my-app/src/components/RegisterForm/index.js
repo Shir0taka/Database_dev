@@ -1,5 +1,4 @@
-import styles from './styles.module.css'
-
+import styles from './styles.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -32,10 +31,23 @@ const RegisterForm = () => {
             .required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-            }, 400);
+            fetch('http://localhost:3001/api/register', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(values),
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Success:', data);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              })
+              .finally(() => {
+                setSubmitting(false);
+              });
         }}
         >
         {({ isSubmitting }) => (
