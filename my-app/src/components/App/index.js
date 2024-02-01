@@ -13,6 +13,7 @@ import RegisterForm from '../RegisterForm';
 import NumberForm from '../NumberForm';
 import TestComponent from '../TestComponent';
 import ReduxComponent from '../ReduxComponent';
+import Data from '../Data';
 
 const food = [
   { id: 1, name: "Ham Ramen", price: 7.99, categoryId: 1 },
@@ -70,9 +71,12 @@ function App() {
     <Wrapper>
       <Header />
       <RouterProvider router={router} />
+      <Data/>
       <Footer />
     </Wrapper>
   );
 }
+
+
 
 export default App;
