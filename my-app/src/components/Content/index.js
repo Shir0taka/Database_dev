@@ -19,6 +19,8 @@ const Content = (props) => {
     const [categoryAmount, setCategoryAmount] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(0);
     const location = useLocation();
+    const apiUrl = "http://localhost:3001/api";
+    const [data, setData] = useState([]);
 
     let [history, setHistory] = useState([]);
 
@@ -41,6 +43,29 @@ const Content = (props) => {
         store.dispatch({ type: 'DECREMENT' });
         console.log(store.getState());
     }, []);
+
+    useEffect(() => {
+        const fetchDataFromDatabase = async () => {
+          try {
+            // Выполняем запрос к API
+            const response = await fetch(`${apiUrl}/data`);
+            const apiData = await response.json();
+
+            const processedData = apiData.map(item => ({
+                id: item.id,
+                name: item.name.toUpperCase(),
+                // Другие манипуляции...
+            }));
+
+            // Обновляем состояние компонента с полученными данными
+            setData(apiData);
+          } catch (error) {
+            console.error("Ошибка при получении данных из базы данных:", error);
+          }
+        };
+      
+        fetchDataFromDatabase();
+      }, []);
 
     const addItem = (amount) => {
         setCategoryAmount(amount);

@@ -24,10 +24,10 @@ const RegisterForm = () => {
             .required('Required'),
             password: Yup.string()
             .min(8, 'Password must me at least 8 characters')
-            .matches(
+            /*.matches(
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])/,
                 'Password must contain at least one uppercase letter and one non-letter symbol'
-            )
+            )*/
             .required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
