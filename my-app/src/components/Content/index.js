@@ -12,6 +12,7 @@ import { Wrapper } from "./styles";
 import store from '../../store.js';
 import styles from './styles.module.css'
 import './styles.css';
+import axios from "axios";
 
 const Content = (props) => {
     const { categoryId } = useParams();
@@ -19,8 +20,7 @@ const Content = (props) => {
     const [categoryAmount, setCategoryAmount] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(0);
     const location = useLocation();
-    const apiUrl = "http://localhost:3001/api";
-    const [data, setData] = useState([]);
+    const apiUrl = "http://127.0.0.1:8000/api/test";
 
     let [history, setHistory] = useState([]);
 
@@ -44,31 +44,20 @@ const Content = (props) => {
         console.log(store.getState());
     }, []);
 
-    useEffect(() => {
-        const fetchDataFromDatabase = async () => {
-          try {
-            // Выполняем запрос к API
-            const response = await fetch(`${apiUrl}/data`);
-            const apiData = await response.json();
-
-            const processedData = apiData.map(item => ({
-                id: item.id,
-                name: item.name.toUpperCase(),
-                // Другие манипуляции...
-            }));
-
-            // Обновляем состояние компонента с полученными данными
-            setData(apiData);
-          } catch (error) {
-            console.error("Ошибка при получении данных из базы данных:", error);
-          }
-        };
-      
-        fetchDataFromDatabase();
-      }, []);
-
     const addItem = (amount) => {
         setCategoryAmount(amount);
+    }
+
+    const sendDataToApi = () => {
+        var data = { status: 'success' };
+
+        axios.post(apiUrl, data)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log("Err: " + error);
+        });
     }
 
     const getCategory = (key) => {
@@ -84,6 +73,7 @@ const Content = (props) => {
     return (
         <div className={styles.wrapper}>
             <button className={styles.toggleButton} onClick={toggleDialog}>Toggle Dialog</button>
+            <button className={styles.toggleButton} onClick={sendDataToApi}>Send Data to API</button>
             <CSSTransition
                 in={showDialog}
                 timeout={800}

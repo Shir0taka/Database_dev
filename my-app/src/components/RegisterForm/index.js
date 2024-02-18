@@ -38,7 +38,12 @@ const RegisterForm = () => {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(values),
+              body: JSON.stringify({
+                firstName: values.firstName || '',
+                lastName: values.lastName || '',
+                email: values.email || '',
+                password: values.password || '',
+              }),
             })
               .then(response => response.json())
               .then(data => {
