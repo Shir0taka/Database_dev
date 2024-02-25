@@ -89,7 +89,6 @@ const Content = (props) => {
                 </div>
             </CSSTransition>
 
-            <Debug history={history}/>
             <CategoryList getCategory={getCategory}/>
             <div>Goods amount: {categoryAmount}</div>
             <ProductList addItem={addItem} category={currentCategory}/>
