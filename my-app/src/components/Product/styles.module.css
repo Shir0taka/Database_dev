@@ -41,6 +41,21 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.formControlNum {
+    margin: auto;
+    display: block;
+    width: 17%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #191970;
+    background-color: #E0FFFF;
+    background-clip: padding-box;
+    border: 1px solid #191970;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .formControl:focus {
     color: #191970;
     background-color: #E0FFFF;

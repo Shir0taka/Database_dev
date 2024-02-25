@@ -12,6 +12,8 @@ import { Wrapper } from "./styles";
 import store from '../../store.js';
 import styles from './styles.module.css'
 import './styles.css';
+import axios from "axios";
+
 
 const Content = (props) => {
     const { categoryId } = useParams();
@@ -19,6 +21,10 @@ const Content = (props) => {
     const [categoryAmount, setCategoryAmount] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(0);
     const location = useLocation();
+    const apiUrl = 'http://127.0.0.1:8000/api/comment';
+
+   
+    
 
     let [history, setHistory] = useState([]);
 
@@ -74,7 +80,6 @@ const Content = (props) => {
                 </div>
             </CSSTransition>
 
-            <Debug history={history}/>
             <CategoryList getCategory={getCategory}/>
             <div>Goods amount: {categoryAmount}</div>
             <ProductList addItem={addItem} category={currentCategory}/>

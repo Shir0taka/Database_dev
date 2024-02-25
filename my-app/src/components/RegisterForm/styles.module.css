@@ -2,6 +2,15 @@
     margin: 2rem;
 }
 
+label {
+    font-size: 24px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
 .formGroup {
     margin-bottom: 1rem;
 }
@@ -14,9 +23,10 @@
 .formControl {
     margin: auto;
     display: block;
-    width: 90%;
+    width: 20%;
     padding: 0.5rem;
     font-size: 1rem;
+    text-align: center;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
@@ -36,7 +46,7 @@
 
 .submitButton {
     text-align: center;
-    width: 100%;
+    width: 10%;
     padding: 0.5rem;
     font-size: 1rem;
     font-weight: bold;
