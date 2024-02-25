@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="http://localhost:3000">React App</a>
+                    <a href="http://localhost:3000/">React App</a>
                 </div>
             </div>
         </div>

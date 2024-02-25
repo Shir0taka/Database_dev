@@ -14,13 +14,17 @@ import styles from './styles.module.css'
 import './styles.css';
 import axios from "axios";
 
+
 const Content = (props) => {
     const { categoryId } = useParams();
     const categories = useContext(categoriesContext);
     const [categoryAmount, setCategoryAmount] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(0);
     const location = useLocation();
-    const apiUrl = "http://127.0.0.1:8000/api/test";
+    const apiUrl = 'http://127.0.0.1:8000/api/comment';
+
+   
+    
 
     let [history, setHistory] = useState([]);
 
@@ -48,18 +52,6 @@ const Content = (props) => {
         setCategoryAmount(amount);
     }
 
-    const sendDataToApi = () => {
-        var data = { status: 'success' };
-
-        axios.post(apiUrl, data)
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.log("Err: " + error);
-        });
-    }
-
     const getCategory = (key) => {
         setCurrentCategory(key);
     }
@@ -73,7 +65,6 @@ const Content = (props) => {
     return (
         <div className={styles.wrapper}>
             <button className={styles.toggleButton} onClick={toggleDialog}>Toggle Dialog</button>
-            <button className={styles.toggleButton} onClick={sendDataToApi}>Send Data to API</button>
             <CSSTransition
                 in={showDialog}
                 timeout={800}

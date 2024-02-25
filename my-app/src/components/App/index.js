@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Product from '../Product';
 import LoginForm from '../LoginForm';
 import AdminPanel from '../AdminPanel';
@@ -13,7 +14,6 @@ import RegisterForm from '../RegisterForm';
 import NumberForm from '../NumberForm';
 import TestComponent from '../TestComponent';
 import ReduxComponent from '../ReduxComponent';
-import Data from '../Data';
 
 const food = [
   { id: 1, name: "Ham Ramen", price: 7.99, categoryId: 1 },
@@ -71,7 +71,6 @@ function App() {
     <Wrapper>
       <Header />
       <RouterProvider router={router} />
-      <Data/>
       <Footer />
     </Wrapper>
   );

@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/test', [TestController::class, 'testing']);
+Route::post('/test', 'TestController@test2');
+Route::post('/comment', 'CommentController@comment');
+Route::post('/reg-customer', 'CustomerController@reg_customer');
+Route::post('/login-customer', 'CustomerController@login_customer');
